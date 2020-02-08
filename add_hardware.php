@@ -40,11 +40,11 @@ $errors = array('hard_name' => '', 'hard_desc' => '', 'hard_brand' => '', 'hard_
 
 			// Create SQL
 			$sql = "INSERT INTO hardwares(name, description, brand, device) VALUES ('$hardware_name','$hardware_desc','$hardware_brand','$hardware_device')";
-			$sql_devices = "SELECT name,id FROM pcs ORDER BY id";
+			
 
 			// Save to database and check:
 
-			$result = $conn->query($sql_devices);
+			
 
 			try {
 				$conn->exec($sql);
@@ -76,12 +76,14 @@ $errors = array('hard_name' => '', 'hard_desc' => '', 'hard_brand' => '', 'hard_
 			<input type="text" name="hard_desc" value="<?php echo $hardware_brand ?>" />
 			<div class="red-text"><?php echo $errors['hard_brand']; ?></div>
 
-			<label>Hardware's Device Location</label>
-			<select name="hard_device">
-				<?php while($device = $result->fetch(PDO::FETCH_ASSOC)): ?>
+			<label for:"hard_device">Hardware's Device Location</label>
+			<select id="hard_device">
+				<?php $sql_devices = "SELECT name,id FROM pcs ORDER BY id";
+				$result = $conn->query($sql_devices);
+				while($device = $result->fetch(PDO::FETCH_ASSOC)): ?>
 					<option value="<?php echo htmlspecialchars($device['id']); ?>"><?php echo htmlspecialchars($device['name']); ?></option>
 				<?php endwhile; ?>
-			</select>
+			</select>		
 			
 			<div class="center">
 				<input type="submit" name="submit" value="submit" class="btn brand z-depth-0" />

@@ -16,6 +16,10 @@
 		href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<style type="text/css">
 
+		select{
+			display:block;
+		}
+
 		.brand {
 			background: #cbb09c !important;
 		}
