@@ -40,7 +40,7 @@ $errors = array('hard_name' => '', 'hard_desc' => '', 'hard_brand' => '', 'hard_
 
 			// Create SQL
 			$sql = "INSERT INTO hardwares(name, description, brand, device) VALUES ('$hardware_name','$hardware_desc','$hardware_brand','$hardware_device')";
-			$sql_devices = "SELECT name,id FROM pcs WHERE id=" . $hardware_device;
+			$sql_devices = "SELECT name,id FROM pcs ORDER BY id";
 
 			// Save to database and check:
 
@@ -78,9 +78,9 @@ $errors = array('hard_name' => '', 'hard_desc' => '', 'hard_brand' => '', 'hard_
 
 			<label>Hardware's Device Location</label>
 			<select name="hard_device">
-				<?php $device = $result->fetch(PDO::FETCH_ASSOC); ?>
+				<?php while($device = $result->fetch(PDO::FETCH_ASSOC)): ?>
 					<option value="<?php echo htmlspecialchars($device['id']); ?>"><?php echo htmlspecialchars($device['name']); ?></option>
-				
+				<?php endwhile; ?>
 			</select>
 			
 			<div class="center">
