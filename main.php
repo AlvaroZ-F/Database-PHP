@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+<?php session_start(); include('config/session.php'); ?>
+
 <html>
 	<?php include('templates/header.php') ?>
 

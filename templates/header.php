@@ -1,12 +1,10 @@
 <?php
 
-	session_start();
-
 	//$user_name = $pass = $email = '';
 	//$errors = array('username' => '', 'password' => '', 'email' => '');
 
 	
-	$name = $_SESSION["username"] ?? "I'm not working well"; // If first value doesn't exist, then it equals to the second.
+	 // If first value doesn't exist, then it equals to the second.
 
 ?>
 

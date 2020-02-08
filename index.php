@@ -2,14 +2,15 @@
 
 	if (isset($_POST['submit'])) {
 		require("userValidator.php");
-		
 		$validation = new UserValidator($_POST);
 		$errors = $validation->validateForm();
+		session_start(); //OBJECT SESSION -> $_SESSION = []
 		if (!$errors) {
 			$_SESSION["username"] = $_POST['username'];
 			header("Location: main.php");
 		}
 		// QUERY_STRING checks out the values right after the website URL http://ad.com"?something=asdad.
+
 		
 
 	}
@@ -38,6 +39,8 @@
 		// Save data to db
 ?>
 
+<?php include('config/session.php'); ?>
+
 <!DOCTYPE html>
 <html>
 	<?php include('templates/header.php') ?>	
@@ -49,15 +52,15 @@
 
 			<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 				<label>Username: </label>
-				<input type="text" name="username" value="<?php //echo $user_name ?>" />
+				<input type="text" name="username" />
 				<div class="red-text"><?php echo $errors['username'] ?? ''; ?></div>
 
 				<label>Password: </label>
-				<input type="password" name="password" value="<?php //echo $pass ?>"  />
+				<input type="password" name="password" />
 				<div class="red-text"><?php echo $errors['password'] ?? ''; ?></div>
 
 				<label>E-Mail: </label>
-				<input type="email" name="email" value="<?php //echo $email ?>"  />
+				<input type="email" name="email" />
 				<div class="red-text"><?php echo $errors['email'] ?? ''; ?></div>
 
 				<div class="center">

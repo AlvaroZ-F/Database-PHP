@@ -22,6 +22,8 @@
 				echo "brand: " . $register['brand'] . "</br>";
 			}
 
+			print($base->query('SELECT id FROM pcs WHERE id=1'));
+
 		?>
 	
 	</body>

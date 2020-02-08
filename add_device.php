@@ -54,6 +54,8 @@ $errors = array('dev_name' => '', 'dev_type' => '', 'dev_desc' => '', 'dev_brand
 
 ?>
 
+<?php session_start(); include('config/session.php'); ?>
+
 <!DOCTYPE html>
 <html>
 	<?php include('templates/header.php') ?>

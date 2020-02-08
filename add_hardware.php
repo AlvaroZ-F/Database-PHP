@@ -57,6 +57,8 @@ $errors = array('hard_name' => '', 'hard_desc' => '', 'hard_brand' => '', 'hard_
 
 ?>
 
+<?php session_start(); include('config/session.php'); ?>
+
 <!DOCTYPE html>
 <html>
 	<?php include('templates/header.php') ?>
