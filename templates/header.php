@@ -1,9 +1,12 @@
 <?php
 
-	$name = $_SESSION['username'] ?? '(Guest)'; // If first value doesn't exist, then it equals to the second.
+	session_start();
 
-	// Get Cookie
-	$user_email = $_COOKIE['email'] ?? "";
+	//$user_name = $pass = $email = '';
+	//$errors = array('username' => '', 'password' => '', 'email' => '');
+
+	
+	$name = $_SESSION["username"] ?? "I'm not working well"; // If first value doesn't exist, then it equals to the second.
 
 ?>
 
@@ -12,17 +15,26 @@
 	<link rel="stylesheet" 
 		href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<style type="text/css">
+
 		.brand {
 			background: #cbb09c !important;
 		}
+
 		.brand-text {
 			color: #cbb09c !important;
 		}
+
+		.brand-black {
+			color: #000 !important;
+			font-weight: bold;
+		}
+
 		form {
 			max-width: 460px;
 			margin: 20px auto;
 			padding: 20px;
 		}
+
 		.device {
 			max-width: 100px;
 			margin: 40px auto -30px;
@@ -38,15 +50,16 @@
 			position: relative;
 			top: 10px;
 		}
+
 	</style>
 </head>	
 <body class="grey lighten-4">
 	<nav class="white z-depth-0">
 		<div class="container">
-			<a href="index.php" class="brand-logo brand-text">PHP Database</a>
+			<a href="main.php" class="brand-logo brand-text">PHP Database</a>
 			<ul id="nav-mobile" class="right hide-on-small-and-down">
+				<li class="black-text"><a class="brand-black" href="index.php">Logout</a></li>
 				<li class="grey-text"> Hello <?php echo htmlspecialchars($name); ?></li>
-				<li class="grey-text"> <?php echo htmlspecialchars($user_email); ?></li>
 			</ul>
 		</div>
 	</nav>

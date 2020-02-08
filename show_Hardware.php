@@ -6,16 +6,10 @@
 	$sql = 'SELECT * FROM hardwares ORDER BY id';
 
 	// Make the query and get results:
-	$results = mysqli_query($conn, $sql);
+	$results = $conn->query($sql);
 
 	// Fetch the resulting rows as an array:
-	$hardwares = mysqli_fetch_all($results, MYSQLI_ASSOC);
-
-	// Free the results from memory:
-	mysqli_free_result($results);
-
-	// Close Connection:
-	mysqli_close($conn);
+	$hardwares = $results->fetch(PDO::FETCH_ASSOC);
 
 	// print_r(explode(',', "hello,this,is,how,explode,works"));
 
@@ -30,24 +24,24 @@
 	<div class="container">
 		<div class="row">
 			
-			<?php foreach($hardwares as $hard): ?>
+			<?php while ($hardwares = $results->fetch(PDO::FETCH_ASSOC)): ?>
 
 			<div class="col s6 md3">
 				<div class="card z-depth-0">
 					<img src="img/device.svg" class="hardware">
 					<div class="card-content center">
-						<h6><?php echo htmlspecialchars($hard['name']); ?></h6>
-						<div><?php echo htmlspecialchars($hard['description']); ?></div>
-						<div><?php echo htmlspecialchars($hard['brand']); ?></div>
-						<div><?php echo htmlspecialchars($hard['device']); ?></div>
+						<h6><?php echo htmlspecialchars($hardwares['name']); ?></h6>
+						<div><?php echo htmlspecialchars($hardwares['description']); ?></div>
+						<div><?php echo htmlspecialchars($hardwares['brand']); ?></div>
+						<div><?php echo htmlspecialchars($hardwares['device']); ?></div>
 					</div>
 					<div class="card-action right-align">
-						<a href="detailsHardware.php?id=<?php echo $hard['id'] ?>" class="brand-text">More Info</a>
+						<a href="detailsHardware.php?id=<?php echo $hardwares['id'] ?>" class="brand-text">More Info</a>
 					</div>
 				</div>
 			</div>
 
-			<?php endforeach; ?>
+			<?php endwhile; ?>
 
 		</div>
 	</div>

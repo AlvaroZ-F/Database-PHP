@@ -33,22 +33,21 @@ $errors = array('dev_name' => '', 'dev_type' => '', 'dev_desc' => '', 'dev_brand
 			//Returns false - No errors
 			// echo "Form is valid";
 		
-			$device_name = mysqli_real_escape_string($conn, $_POST['dev_name']);
-			$device_type = mysqli_real_escape_string($conn, $_POST['dev_type']);
-			$device_desc = mysqli_real_escape_string($conn, $_POST['dev_desc']);
-			$device_brand = mysqli_real_escape_string($conn, $_POST['dev_brand']);
+			$device_name = $_POST['dev_name'];
+			$device_type = $_POST['dev_type'];
+			$device_desc = $_POST['dev_desc'];
+			$device_brand = $_POST['dev_brand'];
 
 			// Create SQL
 			$sql = "INSERT INTO pcs(name, type, description, brand) VALUES ('$device_name','$device_type','$device_desc','$device_brand')";
 
 			// Save to database and check:
 
-			if(mysqli_query($conn, $sql)) {
-				// Success
+			try {
+				$conn->exec($sql);
 				header("Location: main.php");
-			} else {
-				// Error
-				echo "Query error: " . mysqli_error($conn);
+			} catch(Exception $e) {
+				die("Error: " . $e->GetMessage());
 			}
 		}
 	}
@@ -65,15 +64,19 @@ $errors = array('dev_name' => '', 'dev_type' => '', 'dev_desc' => '', 'dev_brand
 			<label>Device's Name</label>
 			<input type="text" name="dev_name" value="<?php echo $device_name ?>"/>
 			<div class="red-text"><?php echo $errors['dev_name']; ?></div>
+
 			<label>Device's Type</label>
 			<input type="text" name="dev_type" value="<?php echo $device_type ?>" />
 			<div class="red-text"><?php echo $errors['dev_type']; ?></div>
+
 			<label>Device's Description</label>
 			<input type="text" name="dev_desc" value="<?php echo $device_desc ?>" />
 			<div class="red-text"><?php echo $errors['dev_desc']; ?></div>
+
 			<label>Device's Brand</label>
 			<input type="text" name="dev_brand" value="<?php echo $device_brand ?>" />
 			<div class="red-text"><?php echo $errors['dev_brand']; ?></div>
+
 			<div class="center">
 				<input type="submit" name="submit" value="submit" class="btn brand z-depth-0" />
 			</div>

@@ -1,11 +1,12 @@
 <?php
 	$serv = $_SERVER['SERVER_NAME'];
 	// Connect to database:
-	$conn = mysqli_connect($serv, 'azambrana', 'fernandez79', 'it shop');
-
-	// Check the connection:
-	if (!$conn) {
-		echo 'Connection error: ' . mysqli_connect_error();
+	try {
+		$conn = new PDO('mysql:host=' . $serv . '; dbname=it shop', 'azambrana', 'fernandez79');
+		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$conn->exec("SET CHARACTER SET utf8");
+	} catch(Exception $e) {
+		die("Error: " . $e->GetMessage());
 	}
 
 ?>

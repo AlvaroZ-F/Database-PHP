@@ -1,14 +1,8 @@
 <?php
 
-	
-
-	//$user_name = $pass = $email = '';
-	//$errors = array('username' => '', 'password' => '', 'email' => '');
-
 	if (isset($_POST['submit'])) {
 		require("userValidator.php");
-
-		session_start();
+		
 		$validation = new UserValidator($_POST);
 		$errors = $validation->validateForm();
 		if (!$errors) {
@@ -16,10 +10,7 @@
 			header("Location: main.php");
 		}
 		// QUERY_STRING checks out the values right after the website URL http://ad.com"?something=asdad.
-		if($_SERVER['QUERY_STRING'] == ''){
-			unset($_SESSION['username']); //Cleans the session by 'name'
-			// session_unset(); would clean up all the session data.
-		}
+		
 
 	}
 		/*
