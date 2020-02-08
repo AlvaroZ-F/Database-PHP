@@ -7,6 +7,8 @@
 		session_start(); //OBJECT SESSION -> $_SESSION = []
 		if (!$errors) {
 			$_SESSION["username"] = $_POST['username'];
+			$_SESSION["password"] = $_POST['password'];
+			include('config/connect.php');
 			header("Location: main.php");
 		}
 		// QUERY_STRING checks out the values right after the website URL http://ad.com"?something=asdad.

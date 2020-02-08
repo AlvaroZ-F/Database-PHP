@@ -1,5 +1,7 @@
 <?php
 	
+	session_start();
+
 	include('config/connect.php');
 
 	if(isset($_POST['delete'])) {

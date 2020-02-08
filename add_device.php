@@ -1,9 +1,11 @@
 <?php
 
-include('config/connect.php');
+	session_start();
 
-$device_name = $device_type = $device_desc = $device_brand = '';
-$errors = array('dev_name' => '', 'dev_type' => '', 'dev_desc' => '', 'dev_brand' => '');
+	include('config/connect.php');
+
+	$device_name = $device_type = $device_desc = $device_brand = '';
+	$errors = array('dev_name' => '', 'dev_type' => '', 'dev_desc' => '', 'dev_brand' => '');
 
 	if (isset($_POST['submit'])) {
 		if (empty($_POST['dev_name']) | empty($_POST['dev_type']) | empty($_POST['dev_desc']) | empty($_POST['dev_brand'])) {
@@ -54,7 +56,7 @@ $errors = array('dev_name' => '', 'dev_type' => '', 'dev_desc' => '', 'dev_brand
 
 ?>
 
-<?php session_start(); include('config/session.php'); ?>
+<?php include('config/session.php'); ?>
 
 <!DOCTYPE html>
 <html>

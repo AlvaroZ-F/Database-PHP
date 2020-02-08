@@ -1,5 +1,7 @@
 <?php
 	
+	session_start();
+
 	include('config/connect.php');
 
 	if(isset($_POST['delete'])) {
@@ -38,7 +40,7 @@
 
 ?>
 
-<?php session_start(); include('config/session.php'); ?>
+<?php include('config/session.php'); ?>
 
 <!DOCTYPE html>
 <html>

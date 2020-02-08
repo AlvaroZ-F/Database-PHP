@@ -1,9 +1,11 @@
 <?php
 
-include('config/connect.php');
+	session_start();
 
-$hardware_name = $hardware_desc = $hardware_brand = $hardware_device = '';
-$errors = array('hard_name' => '', 'hard_desc' => '', 'hard_brand' => '', 'hard_device' => '');
+	include('config/connect.php');
+
+	$hardware_name = $hardware_desc = $hardware_brand = $hardware_device = '';
+	$errors = array('hard_name' => '', 'hard_desc' => '', 'hard_brand' => '', 'hard_device' => '');
 
 	if (isset($_POST['submit'])) {
 		if (empty($_POST['hard_name']) | empty($_POST['hard_desc']) | empty($_POST['hard_brand']) | empty($_POST['hard_device'])) {
@@ -57,7 +59,7 @@ $errors = array('hard_name' => '', 'hard_desc' => '', 'hard_brand' => '', 'hard_
 
 ?>
 
-<?php session_start(); include('config/session.php'); ?>
+<?php include('config/session.php'); ?>
 
 <!DOCTYPE html>
 <html>

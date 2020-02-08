@@ -1,5 +1,7 @@
 <?php
 
+	session_start();
+
 	include('config/connect.php');
 
 	// Write query for all devices.
@@ -15,7 +17,7 @@
 
 ?>
 
-<?php session_start(); include('config/session.php'); ?>
+<?php include('config/session.php'); ?>
 
 <!DOCTYPE html>
 <html>
