@@ -12,7 +12,7 @@
 	//results = mysqli_query($conn, $sql);
 
 	// Fetch the resulting rows as an array:
-	$devices = $results->fetch(PDO::FETCH_ASSOC);
+	// $devices = $results->fetch(PDO::FETCH_ASSOC);
 
 	// print_r(explode(',', "hello,this,is,how,explode,works"));
 

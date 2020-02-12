@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 
-<?php session_start(); include('config/session.php'); ?>
+<?php
+
+	session_start();
+
+	
+
+	include('config/session.php');
+
+?>
+
 
 <html>
 	<?php include('templates/header.php') ?>
@@ -15,6 +24,7 @@
 			</ul>
 		</div>
 	</nav>
+
 
 	<?php include('templates/footer.php') ?>
 </html>

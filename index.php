@@ -1,5 +1,9 @@
 <?php
-
+/*
+The difference between include and require arises when the file being included 
+cannot be found: include will emit a warning ( E_WARNING ) and the script will 
+continue, whereas require will emit a fatal error ( E_COMPILE_ERROR ) and halt the script.
+*/
 	if (isset($_POST['submit'])) {
 		require("userValidator.php");
 		$validation = new UserValidator($_POST);
@@ -69,6 +73,8 @@
 					<input class="btn brand z-depth-0" type="submit" name="submit" value="submit" />
 				</div>
 			</form>
+		</div>
+	</div>
 
 	<?php include('templates/footer.php') ?>
 </html>
